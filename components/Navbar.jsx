@@ -14,24 +14,17 @@ const Navbar = () => {
         
         themeMode ==='light' ? setThemeMode('dark') : setThemeMode('light')
   }
-
+  console.log(state)
   const navigation = [
-    {title:"Home",path:"#"},
-    {title:"Services",path:"#"},
-    {title:"About Us",path:"#"},
-    {title:"Contact Us",path:"#"},
+    {id:1,title:"Home",path:"#"},
+    {id:2,title:"Services",path:"#"},
+    {id:3,title:"About Us",path:"#"},
+    {id:4,title:"Contact Us",path:"#"},
   ];
 
-  useEffect(()=>{
-    document.onclick = (e)=>{
-      const target = e.target;
-      if(!target.closest('.menu-btn')) setState(false);
-    }
-  },[])
-  
 
   return (
-    <nav className={` z-20 sticky top-0 bg-white dark:shadow-gray-900 shadow-md dark:bg-gray-800 py-6 md:text-sm ${state ? "shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : " "} `}>
+    <nav className={` z-20 sticky top-0 bg-white dark:shadow-gray-900 lg:rounded-none lg:m-0 lg:shadow-md  dark:bg-gray-800 py-6 md:text-sm ${state ? "shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : " "} `}>
         <div className='gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8'>
             <div className='flex items-center justify-between md:block'>
                   <button className='text-gray-800 dark:text-white dark:hover:text-gray-300 flex items-center justify-center gap-1'>
@@ -40,7 +33,7 @@ const Navbar = () => {
                   </button>
 
                   <div className='md:hidden'>
-                      <button className='menu-btn  text-gray-500 dark:text-white hover:text-gray-800' onClick={()=>setState(!state)}>{
+                      <button className=' text-gray-500 dark:text-white hover:text-gray-800' onClick={()=>setState((prev)=>!prev)}>{
                         state ? <Nav1/> : <Nav2/>
                       }</button>
                   </div>
@@ -49,15 +42,15 @@ const Navbar = () => {
               state ? "block" : "hidden"
             }`}>
                 <ul className=' justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0'>
-                        {navigation.map((item,idx)=>{
+                        {navigation.map((item)=>{
                           return (
-                            <li key={idx} className='text-gray-700 dark:text-white font-medium dark:hover:text-gray-400 hover:text-gray-900 duration-150'>
+                            <li key={navigation.id} className='text-gray-700 dark:text-white font-medium dark:hover:text-gray-400 hover:text-gray-900 duration-150'>
                               <a href={item.path} className='block'>{item.title}</a>
                             </li>
                           )
                         })}
                 </ul>
-                <div className='flex-1 gap-x-6 items-center justify-end space-x-6 md:flex md:space-y-0 mid:mt-0'>
+                <div className='flex-1 gap-x-6 items-center justify-end space-x-6 md:flex md:space-y-0 lg:mt-0 mt-5'>
                         {currentUser ? (
                           <p className='duration-150 flex items-center justify-center gap-x-1 py-2 px-4 dark:bg-gray-700 text-white font-medium bg-gray-800 hover:bg-gray-700 dark:hover:bg-gray-600 active:bg-gray-900 rounded-full md:inline-flex'>
                             {currentUser.slice(0,8)+"..." +currentUser.slice(35,42)}
@@ -66,8 +59,8 @@ const Navbar = () => {
                           <button onClick={()=>connectWallet()} className='duration-150 flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium dark:bg-gray-700 bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex'>Connect Wallet <Nav3/> </button>
                         )}
                 </div>
-                <div className='ml-4'>
-                  <button onClick={onChangeBtn}>
+                <div className='ml-4 mt-5 lg:mt-0 '>
+                  <button  onClick={onChangeBtn}>
                     {
                       themeMode ==='light'?
                       <MdDarkMode className='text-2xl text-gray-700'/>  

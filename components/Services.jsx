@@ -8,10 +8,10 @@ import { IoIosSend } from "react-icons/io";
 const Services = ({setOpenProfile,setCompleteModal,setGetModel,setStartModal,shipCount}) => {
 
   const team = [
-    {avatar:"Start Shipment",logo:<IoIosSend />},
-    {avatar:"Complete Shipment", logo:<MdIncompleteCircle />},
-    {avatar:"Get Shipment",logo:<SlTarget />},
-    {avatar:"User Profile",logo:<FaUser />},
+    {id:1,avatar:"Start Shipment",logo:<IoIosSend />},
+    {id:2,avatar:"Complete Shipment", logo:<MdIncompleteCircle />},
+    {id:3,avatar:"Get Shipment",logo:<SlTarget />},
+    {id:4,avatar:"User Profile",logo:<FaUser />},
   ]
 
   const openModelBox = (text)=>{
@@ -33,7 +33,7 @@ const Services = ({setOpenProfile,setCompleteModal,setGetModel,setStartModal,shi
               <ul className='grid gap-8 sm:grid-cols-3 md:grid-cols-5'>
             {
               team.map((item,i)=>(
-                <li className='  list-none' key={i}>
+                <li className='  list-none' key={team.id}>
                   <div onClick={()=>openModelBox(i+1)} className='duration-150 p-3 bg-gray-800 dark:bg-gray-700 flex items-center gap-2 cursor-pointer hover:bg-gray-900 dark:hover:bg-gray-600 justify-center shadow-gray-700 shadow-md dark:shadow-gray-900'>
                       <p className='text-gray-100'>
                       {item.logo}
