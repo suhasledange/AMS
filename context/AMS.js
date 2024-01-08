@@ -12,11 +12,9 @@ const fetchContract = (signerProvider) =>
     new ethers.Contract(ContractAddress, ContractABI, signerProvider);
 
 const formatEtherValue = (valueInWei) => {
-        // Convert from wei to Ether
-        const ether = valueInWei / 10 ** 18; // 1 Ether = 10^18 wei
+        const ether = valueInWei / 10 ** 18; 
       
-        // Format Ether value to a human-readable string with 18 decimal places
-        const formattedEther = ether.toFixed(18).replace(/\.?0+$/, ''); // Remove trailing zeros
+        const formattedEther = ether.toFixed(18).replace(/\.?0+$/, '');
       
         return formattedEther;
       };
@@ -28,10 +26,12 @@ export const AmsProvider = ({ children }) => {
 
     const DappName = "AMS Dapp";
     const [currentUser, setCurrentUser] = useState("");
-
+        
+    const [themeMode,setThemeMode] = useState("light")
 
     const getBalance = async () => {
         try {
+            checkIfWalletConnected();
             if (!window.ethereum) return "Install Metamask";
 
             const accounts = await window.ethereum.request({
@@ -70,14 +70,13 @@ export const AmsProvider = ({ children }) => {
                 weaponName,
                 weaponType,
                 weaponDetails,
-                // {
-                //     value: ethers.utils.parseUnits(price, 18),
-                // }
+                {
+                    value: ethers.utils.parseUnits(price, 18),
+                }
             )
             const createItemTx = await createItem;
             const receipt = await createItemTx.wait();
             
-            console.log(receipt);
         } catch (error) {
             console.log("some went wrong", error);
         }
@@ -111,29 +110,34 @@ export const AmsProvider = ({ children }) => {
         }
     };
 
+
     const getAllShipmentCount = async () => {
         try {
-            if (!window.ethereum) return "Install Metamask";
-            const accounts = await window.ethereum.request({
-                method: "eth_accounts",
-
-            });
-            const provider = new ethers.providers.JsonRpcProvider();
-            const contract = fetchContract(provider);
-            const shipmentsCount = new contract.getShipmentsCount(accounts[0]);
-            // console.log(shipmentsCount.bigNumber)
-           
-            // return parseInt(shipmentsCount);
-            return shipmentsCount;
+          if (!window.ethereum) return "Install Metamask";
+      
+          const accounts = await window.ethereum.request({
+            method: "eth_accounts",
+          });
+      
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          const signer = provider.getSigner();
+          const contract = fetchContract(signer);
+      
+          const shipmentsCount = await contract.getShipmentsCount(accounts[0]);
+          return shipmentsCount.toNumber(); 
+        } catch (error) {
+          console.log("Error getting shipment count", error);
+          return 0;
         }
-        catch (error) {
-            console.log("error getting shipment count", error);
-        }
-    };
+      };
 
     const completeShipment = async (completeShip) => {
 
         const { receiver, index } = completeShip;
+
+        console.log(receiver);
+        console.log(index);
+
 
         try {
             if (!window.ethereum) return "Install Metamask";
@@ -148,17 +152,14 @@ export const AmsProvider = ({ children }) => {
             const provider = new ethers.providers.Web3Provider(connection);
             const signer = provider.getSigner();
             const contract = fetchContract(signer);
-
             const transaction = await contract.completeShipment(
                 accounts[0],
                 receiver,
-                index, {
+                index*1, {
                 gasLimit: 3000000,
             }
-
             );
-            transaction.wait();
-            console.log(transaction);
+           await transaction.wait();
 
         } catch (error) {
             console.log("error wrong completeshipment", error);
@@ -219,19 +220,11 @@ export const AmsProvider = ({ children }) => {
             const contract = fetchContract(signer);
             const shipment = await contract.startShipment(
                 accounts[0],
-                 receiver,
-                  index * 1,{
-                    gasLimit: 3000000,
-                  }
-                  );
+                receiver,
+                index * 1,{
+                gasLimit: 3000000,
+                });
 
-            // const transaction = await contract.completeShipment(
-            //     accounts[0],
-            //     receiver,
-            //     index, {
-            //     gasLimit: 5000000,
-            // }
-            
             shipment.wait();
 
             console.log(shipment);
@@ -240,7 +233,6 @@ export const AmsProvider = ({ children }) => {
             console.log("sorry no shipments", error);
         }
     };
-    //check wallet connection
     const checkIfWalletConnected = async () => {
         try {
             if (!window.ethereum) return "Install Metamask";
@@ -262,7 +254,6 @@ export const AmsProvider = ({ children }) => {
         
     };
 
-    //connect wallet function
     const connectWallet = async () => {
         try {
             if (!window.ethereum) return "Install Metamask";
@@ -297,6 +288,8 @@ export const AmsProvider = ({ children }) => {
                 getBalance,
                 DappName,
                 currentUser,
+                themeMode,
+                setThemeMode,
             }}
         >
             {children}

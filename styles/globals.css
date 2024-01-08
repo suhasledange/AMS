@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 8px;;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -13,4 +13,21 @@
 
 ::-webkit-scrollbar-track {
     background-color: #EDF2F7;
+    border-radius: 4px;
 }
+
+.light {
+    background-color: #ffffff;
+    color: #333333;
+  }
+  
+  .dark {
+    background-color: #222c39;
+    color: #ffffff;
+  }
+  
+  .dark::-webkit-scrollbar-thumb{
+    background-color: #576675;
+    border-radius: 4px;
+  }
+

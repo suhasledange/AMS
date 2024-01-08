@@ -27,28 +27,28 @@ const Services = ({setOpenProfile,setCompleteModal,setGetModel,setStartModal,shi
   };
 
   return (
-    <section className='py-0 pb-14'>
+    <section className='py-0 pb-14 '>
         <div className='max-w-screen-xl mx-auto px-4 md:px-8'>
           <div className='mt-12 '>
               <ul className='grid gap-8 sm:grid-cols-3 md:grid-cols-5'>
             {
               team.map((item,i)=>(
                 <li className='  list-none' key={i}>
-                  <div onClick={()=>openModelBox(i+1)} className=' p-3 bg-gray-800 flex items-center gap-2 cursor-pointer hover:bg-gray-900 justify-center'>
+                  <div onClick={()=>openModelBox(i+1)} className='duration-150 p-3 bg-gray-800 dark:bg-gray-700 flex items-center gap-2 cursor-pointer hover:bg-gray-900 dark:hover:bg-gray-600 justify-center shadow-gray-700 shadow-md dark:shadow-gray-900'>
                       <p className='text-gray-100'>
                       {item.logo}
                       </p>
-                      <h1 className='font-medium text-gray-100 w-full h-full object-cover object-center shadow-md rounded-xl'>{item.avatar}</h1>
+                      <h1 className='font-medium text-gray-100 w-full h-full object-cover object-center'>{item.avatar}</h1>
                   </div>
                 </li>
               ))
             }
             <li className='  list-none'>
-                  <div className=' p-3 bg-gray-800 flex items-center gap-2 cursor-pointer hover:bg-gray-900 justify-center'>
+                  <div className=' p-3 bg-gray-800 dark:bg-gray-700 flex items-center gap-2 cursor-pointer dark:hover:bg-gray-600 hover:bg-gray-900 justify-center shadow-gray-700 shadow-md dark:shadow-gray-900'>
                       <p className='text-gray-100'>
                       <MdOutlineFormatListNumbered />
                       </p>
-                      <h1 className='font-medium text-gray-100 w-full h-full object-cover object-center shadow-md rounded-xl'>Ship Count</h1>
+                      <h1 className='font-medium text-gray-100 w-full h-full object-cover object-center'>Ship Count</h1>
                       <h3  className='text-gray-100'>({shipCount})</h3>
                   </div>
                 </li>

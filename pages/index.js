@@ -13,7 +13,14 @@ const index = () => {
     startShipment,
     getAllShipmentCount,
     getBalance,
+    themeMode,
   } = useContext(AmsContext);
+
+  useEffect(()=>{
+    document.querySelector('html').classList.remove('light','dark')
+    document.querySelector('html').classList.add(themeMode);
+    const theme = localStorage.getItem("mode")
+  },[themeMode])
 
   const [createShipmentModel,setcreateShipmentModel] = useState(false);
   const [openProfile,setOpenProfile] = useState(false);
@@ -22,20 +29,22 @@ const index = () => {
   const [getModel,setGetModel] = useState(false);
 
   const [allShipmentsdata,setallShipmentsdata] = useState();
-  const [shipCount,setshipCount] = useState();
-  const [Balance,setBalance] = useState();
+  const [shipCount,setshipCount] = useState(0);
+  const [Balance,setBalance] = useState(0);
   useEffect(()=>{
     const getCampaignData = getAllShipment();
     const ShipCount = getAllShipmentCount();
     const balance = getBalance();
 
     return async ()=>{
+
       const allData = await getCampaignData;
       setallShipmentsdata(allData);
       
       ShipCount.then(result => {
-        setshipCount(result.toNumber()); 
+        setshipCount(result); 
       })
+
       balance.then(result => {
         setBalance(result); 
       })
