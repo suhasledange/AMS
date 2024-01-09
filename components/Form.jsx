@@ -15,6 +15,25 @@ const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) =
     weaponDetails: "",
   });
 
+  const [filteredAmmoNames, setFilteredAmmoNames] = useState([]);
+
+  const handleAmmoTypeChange = (e) => {
+    const selectedType = e.target.value;
+    const ammoTypeObject = AmmoType.find((type) => type.title === selectedType);
+
+    if (ammoTypeObject) {
+      setFilteredAmmoNames(ammoTypeObject.ammoName);
+    } else {
+      setFilteredAmmoNames([]);
+    }
+
+    setShipment({
+      ...shipment,
+      weaponType: selectedType,
+      weaponName: "",
+    });
+  };
+
   // const AmmoType = [
   //   {id:1, title: "Full metal jacket" },
   //   {id:2, title: "Hollow point" },
@@ -48,52 +67,74 @@ const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) =
             </p>
             <form onSubmit={(e) => e.preventDefault()}>
               <div className='relative mt-3'>
-                <input type="text" placeholder='Receiver' className='w-full pl-5 pr-3 py-2 text-gray-500 dark:text-gray-200 bg-transparent outline-none border dark:focus:border-blue-900 focus:border-blue-900 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input required type="text" placeholder='Receiver' className='w-full pl-5 pr-3 py-2 text-gray-500 dark:text-gray-200 bg-transparent outline-none border dark:focus:border-blue-900 focus:border-blue-900 shadow-sm rounded-lg' onChange={(e) => setShipment({
                   ...shipment,
                   receiver: e.target.value,
                 })} />
               </div>
               <div className='relative mt-3'>
-                <input type="date" placeholder='PickupTime' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-600 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input required type="date" placeholder='PickupTime' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-600 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
                   ...shipment,
                   pickupTime: e.target.value,
                 })} />
               </div>
               <div className='relative mt-3'>
-                <input type="text" placeholder='Distance' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent  outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input required type="text" placeholder='Distance' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent  outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
                   ...shipment,
                   distance: e.target.value,
                 })} />
               </div>
               <div className='relative mt-3'>
-                <input type="number" placeholder='Price' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input required type="number" placeholder='Price' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
                   ...shipment,
                   price: e.target.value,
                 })} />
               </div>
+
               <div className='relative mt-3'>
-                <input type="text" placeholder='Ammo Name' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <select
+                  className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border dark:focus:border-blue-600 focus:border-blue-900 shadow-sm rounded-lg'
+
+                  value={shipment.weaponType}
+                  onChange={handleAmmoTypeChange}
+
+                >
+                  <option value="">Select Ammunition Type</option>
+                  {AmmoType.map((item) => (
+                    <option key={item.id} value={item.title}>
+                      {item.title}
+                    </option>
+                  ))}
+                </select>
+
+              </div>
+              <div className='relative mt-3'>
+
+                <select
+                  className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border dark:focus:border-blue-600 focus:border-blue-900 shadow-sm rounded-lg'
+
+                  value={shipment.weaponName}
+                  onChange={(e) => setShipment({ ...shipment, weaponName: e.target.value })}
+
+                >
+                  <option value="">Select Ammunition Name</option>
+                  {filteredAmmoNames.map((ammo) => (
+                    <option key={ammo.id} value={ammo.title}>
+                      {ammo.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+
+              {/* <div className='relative mt-3'>
+                <input required type="text" placeholder='Ammo Name' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
                   ...shipment,
                   weaponName: e.target.value,
                 })} />
-              </div>
-              <div className='relative mt-3'>
-                <select
-                    className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border dark:focus:border-blue-600 focus:border-blue-900 shadow-sm rounded-lg'
-                    onChange={(e) => setShipment({
-                      ...shipment,
-                      weaponType: e.target.value,
-                    })}
-                  >
-                    <option value="">Select Ammunition Type</option>
-                    {AmmoType.map((item) => (
-                      <option key={item.id} value={item.title}>
-                        {item.title}
-                      </option>
-                    ))}
-                  </select>
+              </div> */}
 
-              </div>
+
               <div className='relative mt-3'>
 
                 <textarea rows={3} className=' resize-none w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' placeholder='Ammo Details' onChange={(e) => setShipment({
