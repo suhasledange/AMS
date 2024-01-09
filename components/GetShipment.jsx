@@ -33,8 +33,10 @@ const GetShipment = ({ getModel, setGetModel, getShipment }) => {
               <Str1 className='w-5 h-5 mx-auto' />
             </button>
           </div>
+
           <div className='max-w-sm mx-auto py-3 space-y-3 text-center'>
             <h4 className='text-lg font-medium dark:text-gray-200 text-gray-800'>Tracking Details</h4>
+            
             <form onSubmit={(e) => e.preventDefault()}>
               <div className=' relative mt-3'>
                   <input required type='number' placeholder='Id' className=' w-full pl-5 pr-3 py-2 dark:text-gray-200  text-gray-500 bg-transparent outline-none border focus:border-blue-900 shadow-sm rounded-lg' 

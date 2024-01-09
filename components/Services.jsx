@@ -2,16 +2,17 @@ import React from 'react'
 import { MdIncompleteCircle } from "react-icons/md";
 import { SlTarget } from "react-icons/sl";
 import { FaUser } from "react-icons/fa";
-import { MdOutlineFormatListNumbered } from "react-icons/md";
+import { FaDatabase } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
 
-const Services = ({setOpenProfile,setCompleteModal,setGetModel,setStartModal,shipCount}) => {
+const Services = ({setOpenProfile,setBase,setCompleteModal,setGetModel,setStartModal,shipCount}) => {
 
   const team = [
     {id:1,avatar:"Start Shipment",logo:<IoIosSend />},
     {id:2,avatar:"Complete Shipment", logo:<MdIncompleteCircle />},
     {id:3,avatar:"Get Shipment",logo:<SlTarget />},
     {id:4,avatar:"User Profile",logo:<FaUser />},
+    {id:5,avatar:"Inventory",logo:<FaDatabase />},
   ]
 
   const openModelBox = (text)=>{
@@ -23,7 +24,10 @@ const Services = ({setOpenProfile,setCompleteModal,setGetModel,setStartModal,shi
       setGetModel(true);
     }else if(text === 4){
       setOpenProfile(true);
+    }else if(text === 5){
+      setBase(true);
     }
+    
   };
 
   return (
@@ -43,7 +47,8 @@ const Services = ({setOpenProfile,setCompleteModal,setGetModel,setStartModal,shi
                 </li>
               ))
             }
-            <li className='  list-none'>
+
+            {/* <li className='  list-none'>
                   <div className=' p-3 bg-gray-800 dark:bg-gray-700 flex items-center gap-2 cursor-pointer dark:hover:bg-gray-600 hover:bg-gray-900 justify-center shadow-gray-700 shadow-md dark:shadow-gray-900'>
                       <p className='text-gray-100'>
                       <MdOutlineFormatListNumbered />
@@ -51,7 +56,8 @@ const Services = ({setOpenProfile,setCompleteModal,setGetModel,setStartModal,shi
                       <h1 className='font-medium text-gray-100 w-full h-full object-cover object-center'>Ship Count</h1>
                       <h3  className='text-gray-100'>({shipCount})</h3>
                   </div>
-                </li>
+                </li> */}
+                
             </ul>
           </div>
 

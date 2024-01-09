@@ -1,4 +1,4 @@
-import { Card, CompleteShipment, Form, GetShipment, Profile, Services, StartShipment } from '@/components'
+import {Base, Card, CompleteShipment, Form, GetShipment, Profile, Services, StartShipment } from '@/components'
 import { AmsContext } from '@/context/AMS'
 import React, { useContext, useEffect, useState } from 'react'
 
@@ -24,6 +24,8 @@ const index = () => {
 
   const [createShipmentModel,setcreateShipmentModel] = useState(false);
   const [openProfile,setOpenProfile] = useState(false);
+  const [openBase,setBase] = useState(false);
+
   const [startModal,setStartModal] = useState(false);
   const [completeModal,setCompleteModal] = useState(false);
   const [getModel,setGetModel] = useState(false);
@@ -55,6 +57,7 @@ const index = () => {
     < >
 
       <Services setOpenProfile={setOpenProfile}
+                setBase={setBase}
                 setCompleteModal={setCompleteModal}
                 setGetModel={setGetModel}
                 setStartModal={setStartModal}
@@ -79,6 +82,10 @@ const index = () => {
             Balance={Balance}
 
       />
+      <Base
+             openBase={openBase}
+             setBase={setBase}
+      />
       <CompleteShipment
             completeModal={completeModal}
             setCompleteModal={setCompleteModal}
@@ -94,6 +101,7 @@ const index = () => {
           setStartModal={setStartModal}
           startShipment={startShipment}
       />
+
   </>
   )
 }

@@ -1,5 +1,6 @@
 import Footer from "./Footer";
 import Card from "./Card";
+import Base from "./Base";
 import Navbar from "./Navbar";
 import Services from "./Services";
 import Profile from "./Profile";
@@ -15,6 +16,7 @@ import Fot2 from "./SVG/Fot2";
 import Str1 from "./SVG/Str1";
 
 export {
+    Base,
     Footer,
     Card,
     Navbar,
