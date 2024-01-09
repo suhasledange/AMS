@@ -94,10 +94,8 @@ const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) =
               <div className='relative mt-3'>
                 <select
                   className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border dark:focus:border-blue-600 focus:border-blue-900 shadow-sm rounded-lg'
-
                   value={shipment.weaponType}
                   onChange={handleAmmoTypeChange}
-
                 >
                   <option value="">Select Ammunition Type</option>
                   {AmmoType.map((item) => (
