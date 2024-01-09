@@ -51,9 +51,9 @@ const GetShipment = ({ getModel, setGetModel, getShipment }) => {
               <div className='text-left'>
                     <p>Sender : {singleShipmentData.sender.slice(0,10)+"..."+singleShipmentData.sender.slice(36,42)}</p>
                     <p>Receiver : {singleShipmentData.receiver.slice(0,10)+"..."+singleShipmentData.receiver.slice(36,42)}</p>
-                    <p>Weapon Name : {singleShipmentData.weaponName}</p>
-                    <p>Weapon Type : {singleShipmentData.weaponType}</p>
-                    <p>Weapon Details : {singleShipmentData.weaponDetails}</p>
+                    <p>Ammo Name : {singleShipmentData.weaponName}</p>
+                    <p>Ammo Type : {singleShipmentData.weaponType}</p>
+                    <p>Ammo Details : {singleShipmentData.weaponDetails}</p>
                     <p>PickUp Time : {convertTime(singleShipmentData.pickupTime)}</p>
                     <p>DeliveryTime : {convertTime(singleShipmentData.deliveryTime)}</p>
                     <p>Distance : {singleShipmentData.distance+" Km"}</p>

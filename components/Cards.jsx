@@ -54,15 +54,15 @@ const Cards = ({shipment}) => {
                     </p>
                 </div>
                 <div className='border-b-2 border-gray-400 pb-1 '>
-                    <h1 className='text-md font-medium'>Weapon Name : </h1>
+                    <h1 className='text-md font-medium'>Ammo Name : </h1>
                     <p className='text-sm'>{shipment.weaponName}</p>
                 </div>
                 <div className='border-b-2 border-gray-400 pb-1 '>
-                    <h1 className='text-md font-medium'>Weapon Type : </h1>
+                    <h1 className='text-md font-medium'>Ammo Type : </h1>
                     <p className='text-sm'>{shipment.weaponType}</p>
                 </div>
                 <div className='border-b-2 border-gray-400 pb-1 '>
-                    <h1 className='text-md font-medium'>Weapon Details : </h1>
+                    <h1 className='text-md font-medium'>Ammo Details : </h1>
                     <textarea  rows={4} className=' bg-transparent focus:outline-none text-sm w-full resize-none' value={shipment.weaponDetails} />
                 </div>
                 <div className='border-b-2 border-gray-400 pb-1 '>

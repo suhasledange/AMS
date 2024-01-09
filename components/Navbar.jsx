@@ -15,6 +15,8 @@ const Navbar = () => {
         themeMode ==='light' ? setThemeMode('dark') : setThemeMode('light')
   }
   console.log(state)
+
+
   const navigation = [
     {id:1,title:"Home",path:"#"},
     {id:2,title:"Services",path:"#"},
@@ -22,11 +24,12 @@ const Navbar = () => {
     {id:4,title:"Contact Us",path:"#"},
   ];
 
-
   return (
     <nav className={` z-20 sticky top-0 bg-white dark:shadow-gray-900 lg:rounded-none lg:m-0 lg:shadow-md  dark:bg-gray-800 py-6 md:text-sm ${state ? "shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : " "} `}>
         <div className='gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8'>
             <div className='flex items-center justify-between md:block'>
+                 
+                 
                   <button className='text-gray-800 dark:text-white dark:hover:text-gray-300 flex items-center justify-center gap-1'>
                     <GiShotgunRounds className='text-3xl'/>
                     <h1 className=' text-2xl font-bold'>AMS</h1>
@@ -38,6 +41,8 @@ const Navbar = () => {
                       }</button>
                   </div>
             </div>  
+
+
             <div className={`flex-1 items-center mt-8 md:my-0 md:flex ${
               state ? "block" : "hidden"
             }`}>
@@ -55,6 +60,7 @@ const Navbar = () => {
                           <p className='duration-150 flex items-center justify-center gap-x-1 py-2 px-4 dark:bg-gray-700 text-white font-medium bg-gray-800 hover:bg-gray-700 dark:hover:bg-gray-600 active:bg-gray-900 rounded-full md:inline-flex'>
                             {currentUser.slice(0,8)+"..." +currentUser.slice(35,42)}
                           </p>
+                          
                         ) : (
                           <button onClick={()=>connectWallet()} className='duration-150 flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium dark:bg-gray-700 bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex'>Connect Wallet <Nav3/> </button>
                         )}

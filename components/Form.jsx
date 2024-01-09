@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Nav1 } from '.';
+import { AmmoType } from '@/constant';
+
 
 const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) => {
 
@@ -12,11 +14,12 @@ const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) =
     weaponType: "",
     weaponDetails: "",
   });
-  const AmmoType = [
-    { title: "Full metal jacket" },
-    { title: "Hollow point" },
-    { title: "Soft point" },
-  ];
+
+  // const AmmoType = [
+  //   {id:1, title: "Full metal jacket" },
+  //   {id:2, title: "Hollow point" },
+  //   {id:3, title: "Soft point" },
+  // ];
 
   const createItem = async () => {
     try {
@@ -69,7 +72,7 @@ const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) =
                 })} />
               </div>
               <div className='relative mt-3'>
-                <input type="text" placeholder='Weapon Name' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input type="text" placeholder='Ammo Name' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
                   ...shipment,
                   weaponName: e.target.value,
                 })} />
@@ -83,8 +86,8 @@ const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) =
                     })}
                   >
                     <option value="">Select Ammunition Type</option>
-                    {AmmoType.map((item, index) => (
-                      <option key={index} value={item.title}>
+                    {AmmoType.map((item) => (
+                      <option key={item.id} value={item.title}>
                         {item.title}
                       </option>
                     ))}
@@ -93,7 +96,7 @@ const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) =
               </div>
               <div className='relative mt-3'>
 
-                <textarea rows={3} className=' resize-none w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' placeholder='Weapon Details' onChange={(e) => setShipment({
+                <textarea rows={3} className=' resize-none w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' placeholder='Ammo Details' onChange={(e) => setShipment({
                   ...shipment,
                   weaponDetails: e.target.value,
                 })} />
