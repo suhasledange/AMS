@@ -4,10 +4,10 @@ import { Fot1, Fot2 } from '.'
 
 const Footer = () => {
     const footerNavs=[
-      {id:1,path:"#",name:"Terms"},
-      {id:2,path:"#",name:"License"},
-      {id:3,path:"#",name:"Privacy"},
-      {id:4,path:"#",name:"About Us"},
+      {path:"#",name:"Terms"},
+      {path:"#",name:"License"},
+      {path:"#",name:"Privacy"},
+      {path:"#",name:"About Us"},
     ]
 
   return (
@@ -24,7 +24,7 @@ const Footer = () => {
                 </p>
                 <ul className='font-medium flex flex-wrap items-center gap-4 text-lg sm:text-base'>
                   {footerNavs.map((item,idx)=>(
-                    <li key={footerNavs.id} className='text-gray-800 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-100 hover:underline duration-150'>
+                    <li key={item.name} className='text-gray-800 dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-100 hover:underline duration-150'>
                       <a key={idx} href={item.path}>{item.name}</a>
                     </li>
                   ))}

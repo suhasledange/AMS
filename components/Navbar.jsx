@@ -14,14 +14,11 @@ const Navbar = () => {
         
         themeMode ==='light' ? setThemeMode('dark') : setThemeMode('light')
   }
-  console.log(state)
-
-
   const navigation = [
-    {id:1,title:"Home",path:"#"},
-    {id:2,title:"Services",path:"#"},
-    {id:3,title:"About Us",path:"#"},
-    {id:4,title:"Contact Us",path:"#"},
+    {title:"Home",path:"#"},
+    {title:"Services",path:"#"},
+    {title:"About Us",path:"#"},
+    {title:"Contact Us",path:"#"},
   ];
 
   return (
@@ -49,7 +46,7 @@ const Navbar = () => {
                 <ul className=' justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0'>
                         {navigation.map((item)=>{
                           return (
-                            <li key={navigation.id} className='text-gray-700 dark:text-white font-medium dark:hover:text-gray-400 hover:text-gray-900 duration-150'>
+                            <li key={item.title} className='text-gray-700 dark:text-white font-medium dark:hover:text-gray-400 hover:text-gray-900 duration-150'>
                               <a href={item.path} className='block'>{item.title}</a>
                             </li>
                           )

@@ -39,9 +39,7 @@ const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
               </p>
         </div>
         </div>
-
       <div className='mt-12'>
- 
          <div className='flex flex-wrap gap-5 items-center lg:justify-normal justify-center'>
       
        {filteredData.map((shipment,idx)=>(

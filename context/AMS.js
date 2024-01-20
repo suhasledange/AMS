@@ -7,7 +7,6 @@ import React from 'react'
 const ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 const ContractABI = ams.abi;
 
-
 const fetchContract = (signerProvider) =>
     new ethers.Contract(ContractAddress, ContractABI, signerProvider);
 
@@ -17,7 +16,7 @@ const formatEtherValue = (valueInWei) => {
         const formattedEther = ether.toFixed(18).replace(/\.?0+$/, '');
       
         return formattedEther;
-      };
+};
 
 
 export const AmsContext = React.createContext();
@@ -76,6 +75,7 @@ export const AmsProvider = ({ children }) => {
             )
             const createItemTx = await createItem;
             const receipt = await createItemTx.wait();
+            console.log(receipt);
             
         } catch (error) {
             console.log("some went wrong", error);

@@ -37,14 +37,25 @@ const Services = ({setOpenProfile,setBase,setCompleteModal,setGetModel,setStartM
               <ul className='grid gap-8 sm:grid-cols-3 md:grid-cols-5'>
             {
               team.map((item,i)=>(
-                <li className='  list-none' key={team.id}>
+
+                <li className='  list-none' key={item.id}>
+
                   <div onClick={()=>openModelBox(i+1)} className='duration-150 p-3 bg-gray-800 dark:bg-gray-700 flex items-center gap-2 cursor-pointer hover:bg-gray-900 dark:hover:bg-gray-600 justify-center shadow-gray-700 shadow-md dark:shadow-gray-900'>
+                     
                       <p className='text-gray-100'>
                       {item.logo}
                       </p>
+
+                     
                       <h1 className='font-medium text-gray-100 w-full h-full object-cover object-center'>{item.avatar}</h1>
+
+
                   </div>
+
+
                 </li>
+
+
               ))
             }
 

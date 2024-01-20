@@ -27,6 +27,7 @@ const index = () => {
   const [openBase,setBase] = useState(false);
 
   const [startModal,setStartModal] = useState(false);
+
   const [completeModal,setCompleteModal] = useState(false);
   const [getModel,setGetModel] = useState(false);
 
@@ -62,7 +63,6 @@ const index = () => {
                 setGetModel={setGetModel}
                 setStartModal={setStartModal}
                 shipCount={shipCount}
-
       />
       <Card
             setcreateShipmentModel={setcreateShipmentModel}
