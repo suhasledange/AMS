@@ -18,7 +18,6 @@ const formatEtherValue = (valueInWei) => {
         return formattedEther;
 };
 
-
 export const AmsContext = React.createContext();
 
 export const AmsProvider = ({ children }) => {
@@ -75,7 +74,6 @@ export const AmsProvider = ({ children }) => {
             )
             const createItemTx = await createItem;
             const receipt = await createItemTx.wait();
-            console.log(receipt);
             
         } catch (error) {
             console.log("some went wrong", error);
