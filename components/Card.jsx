@@ -12,7 +12,7 @@ const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
   // }
 
 
-  const filteredData = allShipmentsdata.filter((shipment) => {
+  const filteredData = allShipmentsdata?.filter((shipment) => {
     const { weaponName, weaponType,sender,receiver } = shipment;
 
     return (
@@ -43,7 +43,7 @@ const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
       <div className='mt-12'>
          <div className='flex flex-wrap gap-5 items-center lg:justify-normal justify-center'>
       
-       {filteredData.map((shipment,idx)=>(
+       {filteredData?.map((shipment,idx)=>(
          <Cards key={idx} shipment={shipment}/>      
          ))} 
         </div> 
