@@ -6,9 +6,10 @@ import { FaSearch } from "react-icons/fa";
 const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
   
   const [searchValue, setSearchValue] = useState('');
-  if (!allShipmentsdata) {
-    return <div className='text-lx font-medium h-40 text-gray-600 pl-52'>Loading...</div>; 
-  }
+
+  // if (!allShipmentsdata) {
+  //   return <div className='text-lx font-medium h-40 text-gray-600 pl-52'>Loading...</div>; 
+  // }
 
 
   const filteredData = allShipmentsdata.filter((shipment) => {
