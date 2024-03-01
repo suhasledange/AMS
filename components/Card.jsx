@@ -1,32 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Cards from './Cards';
 import { FaSearch } from "react-icons/fa";
-import { AmsContext } from '@/context/AMS';
 
 
 const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
-  
-
-  const {
-    getAllShipment,
-  } = useContext(AmsContext);
-
-  const [alldata,setalldata] = useState();
-
-  useEffect(()=>{
-
-    const getCampaignData = getAllShipment();
-
-    return async ()=>{
-
-      const allData = await getCampaignData;
-      setalldata(allData);
-      
-    }
-
-  },[])
-
-  console.log(alldata)
 
   const [searchValue, setSearchValue] = useState('');
 
