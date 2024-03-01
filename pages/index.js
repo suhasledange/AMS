@@ -70,9 +70,13 @@ const index = () => {
       />
 
       <Form
+
             createShipmentModel={createShipmentModel}
             createShipment={createShipment}
             setcreateShipmentModel={setcreateShipmentModel}
+            getAllShipment={getAllShipment}
+            setallShipmentsdata={setallShipmentsdata}
+
       />
       <Profile
             openProfile={openProfile}
@@ -90,6 +94,8 @@ const index = () => {
             completeModal={completeModal}
             setCompleteModal={setCompleteModal}
             completeShipment={completeShipment}
+            getAllShipment={getAllShipment}
+           setallShipmentsdata={setallShipmentsdata}
       />
       <GetShipment
           getModel={getModel}
@@ -100,6 +106,8 @@ const index = () => {
           startModal={startModal}
           setStartModal={setStartModal}
           startShipment={startShipment}
+          getAllShipment={getAllShipment}
+          setallShipmentsdata={setallShipmentsdata}
       />
 
   </>

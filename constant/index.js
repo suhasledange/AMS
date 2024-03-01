@@ -50,39 +50,6 @@
 
   ];
 
-//   export const BaseData = [
-//     {id:1,
-//         name:"Nashik",
-//         data:[
-//             {
-//                 ammoName:[
-//                     {id:1,title:".50 BMG (Browning Machine Gun)"},
-//                     {id:2,title:".22 LR (Long Rifle)"},
-//                     {id:3,title:"10mm Auto"},
-//                     {id:4,title:".300 Blackout"},
-//                     {id:5,title:"7.62x39mm (commonly used in AK-47 rifles)"},
-//                  ]
-//             },
-//         ]
-
-//     },
-//     {id:2,
-//         name:"Mumbai",
-//         data:[
-//             {
-//                 ammoName:[
-//                     {id:1,title:"5.56x45mm NATO"},
-//                     {id:2,title:"7.62x51mm NATO"},
-//                     {id:3,title:".308 Winchester"},
-//                     {id:4,title:".223 Remington"},
-//                     {id:5,title:"6.5mm Creedmoor"},
-//                  ]
-//             },
-//         ]
-
-//     },
-
-//   ]
 
 export const AmmoLocations = [
     {

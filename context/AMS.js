@@ -4,7 +4,7 @@ import ams from '../context/AMS.json'
 import { useEffect, useState } from "react";
 import React from 'react'
 
-const ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const ContractAddress = "0xb6F128Af2a3ffC82A27b0aeAFfE21bba5bcCD42d";
 const ContractABI = ams.abi;
 
 const fetchContract = (signerProvider) =>
@@ -84,7 +84,7 @@ export const AmsProvider = ({ children }) => {
     const getAllShipment = async () => {
         try {
             
-            const provider = new ethers.providers.JsonRpcProvider();
+            const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com");
             const contract = fetchContract(provider);
 
             const shipments = await contract.getAllTransactions();
@@ -132,10 +132,6 @@ export const AmsProvider = ({ children }) => {
     const completeShipment = async (completeShip) => {
 
         const { receiver, index } = completeShip;
-
-        console.log(receiver);
-        console.log(index);
-
 
         try {
             if (!window.ethereum) return "Install Metamask";
@@ -242,6 +238,7 @@ export const AmsProvider = ({ children }) => {
 
             if (accounts.length) {
                 setCurrentUser(accounts[0]);
+
             } else {
                 return "No Account"
             }
@@ -262,6 +259,7 @@ export const AmsProvider = ({ children }) => {
             });
 
             setCurrentUser(accounts[0]);
+            console.log("run")
 
         } catch (error) {
             console.log("Something went wrong", error);

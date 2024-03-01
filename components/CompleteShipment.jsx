@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Str1 } from '.';
 
-const CompleteShipment = ({completeModal,setCompleteModal,completeShipment}) => {
+const CompleteShipment = ({setallShipmentsdata,getAllShipment,completeModal,setCompleteModal,completeShipment}) => {
 
     const [completeShip,setCompleteShip]=useState({
       receiver:"",
@@ -9,9 +9,12 @@ const CompleteShipment = ({completeModal,setCompleteModal,completeShipment}) => 
     })
 
     const changeStatus = async()=>{
-      completeShipment(completeShip);
+      await completeShipment(completeShip);
+      const getCampaignData = getAllShipment();
+      const allData = await getCampaignData;
+      await setallShipmentsdata(allData);
+      setCompleteModal(false)
     }
-
   return completeModal ? (
     <div className='fixed inset-0 z-10 overflow-y-auto'>
       <div className='fixed inset-0 w-full h-full bg-black opacity-40' onClick={() => setCompleteModal(false)}>

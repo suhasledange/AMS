@@ -3,7 +3,7 @@ import { Nav1 } from '.';
 import { AmmoType } from '@/constant';
 
 
-const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) => {
+const Form = ({ setallShipmentsdata,getAllShipment,createShipmentModel, createShipment, setcreateShipmentModel }) => {
 
   const [shipment, setShipment] = useState({
     receiver: "",
@@ -37,6 +37,10 @@ const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) =
   const createItem = async () => {
     try {
       await createShipment(shipment);
+      const getCampaignData = getAllShipment();
+      const allData = await getCampaignData;
+      await setallShipmentsdata(allData);
+      setcreateShipmentModel(false)
     } catch (error) {
       console.log("wrong creating item");
     }
@@ -65,6 +69,8 @@ const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) =
                   ...shipment,
                   receiver: e.target.value,
                 })} />
+
+                
               </div>
               <div className='relative mt-3'>
                 <input required type="date" placeholder='PickupTime' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-600 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
@@ -73,7 +79,7 @@ const Form = ({ createShipmentModel, createShipment, setcreateShipmentModel }) =
                 })} />
               </div>
               <div className='relative mt-3'>
-                <input required type="text" placeholder='Distance' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent  outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input required type="number" placeholder='Distance' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent  outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
                   ...shipment,
                   distance: e.target.value,
                 })} />
