@@ -1,16 +1,38 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Cards from './Cards';
 import { FaSearch } from "react-icons/fa";
+import { AmsContext } from '@/context/AMS';
 
 
 const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
   
+
+  const {
+    getAllShipment,
+  } = useContext(AmsContext);
+
+  const [alldata,setalldata] = useState();
+
+  useEffect(()=>{
+
+    const getCampaignData = getAllShipment();
+
+    return async ()=>{
+
+      const allData = await getCampaignData;
+      setalldata(allData);
+      
+    }
+
+  },[])
+
+  console.log(alldata)
+
   const [searchValue, setSearchValue] = useState('');
 
   // if (!allShipmentsdata) {
   //   return <div className='text-lx font-medium h-40 text-gray-600 pl-52'>Loading...</div>; 
   // }
-console.log(allShipmentsdata)
 
   const filteredData = allShipmentsdata?.filter((shipment) => {
     const { weaponName, weaponType,sender,receiver } = shipment;
