@@ -10,7 +10,7 @@ const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
   // if (!allShipmentsdata) {
   //   return <div className='text-lx font-medium h-40 text-gray-600 pl-52'>Loading...</div>; 
   // }
-
+console.log(allShipmentsdata)
 
   const filteredData = allShipmentsdata?.filter((shipment) => {
     const { weaponName, weaponType,sender,receiver } = shipment;

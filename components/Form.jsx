@@ -85,7 +85,7 @@ const Form = ({ setallShipmentsdata,getAllShipment,createShipmentModel, createSh
                 })} />
               </div>
               <div className='relative mt-3'>
-                <input required type="number" step="0.01" placeholder='Price' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input required type="number" step="0.0001" placeholder='Price' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
                   ...shipment,
                   price: e.target.value,
                 })} />
