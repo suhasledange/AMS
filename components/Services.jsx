@@ -45,8 +45,6 @@ const Services = ({setOpenProfile,setBase,setCompleteModal,setGetModel,setStartM
                       <p className='text-gray-100'>
                       {item.logo}
                       </p>
-
-                     
                       <h1 className='font-medium text-gray-100 w-full h-full object-cover object-center'>{item.avatar}</h1>
 
 

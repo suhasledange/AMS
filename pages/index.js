@@ -1,117 +1,73 @@
-import {Base, Card, CompleteShipment, Form, GetShipment, Profile, Services, StartShipment } from '@/components'
-import { AmsContext } from '@/context/AMS'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
+import { Base, Card, CompleteShipment, Form, GetShipment, Profile, Services, StartShipment } from '@/components';
+import { AmsContext } from '@/context/AMS';
 
-const index = () => {
+const Index = () => {
+  const { currentUser, createShipment, getAllShipment, completeShipment, getShipment, startShipment, getAllShipmentCount, getBalance, themeMode } = useContext(AmsContext);
 
-  const {
-    currentUser,
-    createShipment,
-    getAllShipment,
-    completeShipment,
-    getShipment,
-    startShipment,
-    getAllShipmentCount,
-    getBalance,
-    themeMode,
-  } = useContext(AmsContext);
-
-  useEffect(()=>{
-    document.querySelector('html').classList.remove('light','dark')
+  useEffect(() => {
+    document.querySelector('html').classList.remove('light', 'dark');
     document.querySelector('html').classList.add(themeMode);
-    const theme = localStorage.getItem("mode")
-  },[themeMode])
+    const theme = localStorage.getItem('mode');
+  }, [themeMode]);
 
-  const [createShipmentModel,setcreateShipmentModel] = useState(false);
-  const [openProfile,setOpenProfile] = useState(false);
-  const [openBase,setBase] = useState(false);
+  const [createShipmentModel, setCreateShipmentModel] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
+  const [openBase, setBase] = useState(false);
+  const [startModal, setStartModal] = useState(false);
+  const [completeModal, setCompleteModal] = useState(false);
+  const [getModel, setGetModel] = useState(false);
+  const [allShipmentsdata, setAllShipmentsdata] = useState();
+  const [shipCount, setShipCount] = useState(0);
+  const [balance, setBalance] = useState(0);
+  const [showNotification, setShowNotification] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      const allData = await getAllShipment();
+      const count = await getAllShipmentCount();
+      const balance = await getBalance();
 
-  const [startModal,setStartModal] = useState(false);
+      setAllShipmentsdata(allData);
+      setShipCount(count);
+      setBalance(balance);
+    };
 
-  const [completeModal,setCompleteModal] = useState(false);
-  const [getModel,setGetModel] = useState(false);
+    fetchData();
 
-  const [allShipmentsdata,setallShipmentsdata] = useState();
-  const [shipCount,setshipCount] = useState(0);
-  const [Balance,setBalance] = useState(0);
-  useEffect(()=>{
-    const getCampaignData = getAllShipment();
-    const ShipCount = getAllShipmentCount();
-    const balance = getBalance();
-
-    return async ()=>{
-
-      const allData = await getCampaignData;
-      setallShipmentsdata(allData);
-      
-      ShipCount.then(result => {
-        setshipCount(result); 
-      })
-
-      balance.then(result => {
-        setBalance(result); 
-      })
+    const notificationShown = localStorage.getItem('notificationShown');
+    if (!notificationShown) {
+      setShowNotification(true);
+      localStorage.setItem('notificationShown', 'true');
+  
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 4500);
     }
-  },[])
+  }, []);
+  const PolygonNotification = () => {
+    return (
+      <div onClick={()=>setShowNotification(false)} className={`${showNotification ? "flex" : "hidden"} absolute items-center justify-center w-full h-full bg-black/[0.5]`}>
+        <div className='-translate-y-20 bg-gray-800 mx-5 p-3 rounded-sm'>
+        <p className='text-center text-gray-100 font-semibold tracking-wider' style={{ margin: '0' }}>Note: This application requires Polygon Mumbai Testnet account to function properly.</p>
+        </div>
+      </div>
+    );
+  };
 
   return (
-    < >
+    <>
+      {<PolygonNotification />}
+      
+      <Services setOpenProfile={setOpenProfile} setBase={setBase} setCompleteModal={setCompleteModal} setGetModel={setGetModel} setStartModal={setStartModal} shipCount={shipCount} />
+      <Card setCreateShipmentModel={setCreateShipmentModel} allShipmentsdata={allShipmentsdata} />
+      <Form createShipmentModel={createShipmentModel} createShipment={createShipment} setCreateShipmentModel={setCreateShipmentModel} getAllShipment={getAllShipment} setAllShipmentsdata={setAllShipmentsdata} />
+      <Profile openProfile={openProfile} setOpenProfile={setOpenProfile} currentUser={currentUser} shipCount={shipCount} Balance={balance} />
+      <Base openBase={openBase} setBase={setBase} />
+      <CompleteShipment completeModal={completeModal} setCompleteModal={setCompleteModal} completeShipment={completeShipment} getAllShipment={getAllShipment} setAllShipmentsdata={setAllShipmentsdata} />
+      <GetShipment getModel={getModel} setGetModel={setGetModel} getShipment={getShipment} />
+      <StartShipment startModal={startModal} setStartModal={setStartModal} startShipment={startShipment} getAllShipment={getAllShipment} setAllShipmentsdata={setAllShipmentsdata} />
+    </>
+  );
+};
 
-      <Services setOpenProfile={setOpenProfile}
-                setBase={setBase}
-                setCompleteModal={setCompleteModal}
-                setGetModel={setGetModel}
-                setStartModal={setStartModal}
-                shipCount={shipCount}
-      />
-      <Card
-            setcreateShipmentModel={setcreateShipmentModel}
-            allShipmentsdata={allShipmentsdata}
-      />
-
-      <Form
-
-            createShipmentModel={createShipmentModel}
-            createShipment={createShipment}
-            setcreateShipmentModel={setcreateShipmentModel}
-            getAllShipment={getAllShipment}
-            setallShipmentsdata={setallShipmentsdata}
-
-      />
-      <Profile
-            openProfile={openProfile}
-            setOpenProfile={setOpenProfile}
-            currentUser={currentUser}
-            shipCount={shipCount}
-            Balance={Balance}
-
-      />
-      <Base
-             openBase={openBase}
-             setBase={setBase}
-      />
-      <CompleteShipment
-            completeModal={completeModal}
-            setCompleteModal={setCompleteModal}
-            completeShipment={completeShipment}
-            getAllShipment={getAllShipment}
-           setallShipmentsdata={setallShipmentsdata}
-      />
-      <GetShipment
-          getModel={getModel}
-          setGetModel={setGetModel}
-          getShipment={getShipment}
-      />
-      <StartShipment
-          startModal={startModal}
-          setStartModal={setStartModal}
-          startShipment={startShipment}
-          getAllShipment={getAllShipment}
-          setallShipmentsdata={setallShipmentsdata}
-      />
-
-  </>
-  )
-}
-
-export default index
+export default Index;
