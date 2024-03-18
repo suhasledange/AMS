@@ -41,7 +41,7 @@ const Index = () => {
   
       setTimeout(() => {
         setShowNotification(false);
-      }, 4500);
+      }, 5000);
     }
   }, []);
   const PolygonNotification = () => {
