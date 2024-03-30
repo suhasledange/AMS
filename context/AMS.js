@@ -4,7 +4,7 @@ import ams from '../context/AMS.json'
 import { useEffect, useState } from "react";
 import React from 'react'
 
-const ContractAddress = "0x13dB7eb91A0f46A5f481050018b88433105698a8";
+const ContractAddress = "0xC713BDfA18edCA377c85DeD295503E4882BaeC64";
 const ContractABI = ams.abi;
 
 const fetchContract = (signerProvider) =>
@@ -84,7 +84,7 @@ export const AmsProvider = ({ children }) => {
     const getAllShipment = async () => {
         try {
             
-            const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com/v1/8abfc6b12eef6004bddef179307826aea3ddb97d");
+            const provider = new ethers.providers.JsonRpcProvider("https://sepolia.infura.io/v3/047abb4be9a143bd8fb3dc8142d2fedf");
             const contract = fetchContract(provider);
 
             const shipments = await contract.getAllTransactions();
