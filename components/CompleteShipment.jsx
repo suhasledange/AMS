@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Str1 } from '.';
 
-const CompleteShipment = ({setallShipmentsdata,getAllShipment,completeModal,setCompleteModal,completeShipment}) => {
+const CompleteShipment = ({setAllShipmentsdata,getAllShipment,completeModal,setCompleteModal,completeShipment}) => {
 
     const [completeShip,setCompleteShip]=useState({
       receiver:"",
@@ -12,7 +12,7 @@ const CompleteShipment = ({setallShipmentsdata,getAllShipment,completeModal,setC
       await completeShipment(completeShip);
       const getCampaignData = getAllShipment();
       const allData = await getCampaignData;
-      await setallShipmentsdata(allData);
+      await setAllShipmentsdata(allData);
       setCompleteModal(false)
     }
   return completeModal ? (

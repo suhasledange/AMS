@@ -2,6 +2,8 @@ import React from 'react'
 import { RiFileCopyLine } from 'react-icons/ri';
 const Cards = ({shipment}) => {
 
+    
+
     const handleCopy = (text) => {
         navigator.clipboard.writeText(text); 
       };

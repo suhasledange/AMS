@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import { Str1 } from '.'
 
-const StartShipment = ({ setallShipmentsdata,getAllShipment,startModal, setStartModal, startShipment }) => {
+const StartShipment = ({ setAllShipmentsdata,getAllShipment,startModal, setStartModal, startShipment }) => {
 
   const [getProduct, setGetProduct] = useState({
     receiver: "",
     index: "",
   })
+  
 
   const StartShipment = async () => {
     await startShipment(getProduct);
     const getCampaignData = getAllShipment();
     const allData = await getCampaignData;
-    await setallShipmentsdata(allData);
+    await setAllShipmentsdata(allData);
     setStartModal(false)
   }
 

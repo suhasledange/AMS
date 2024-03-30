@@ -48,7 +48,7 @@ const Index = () => {
     return (
       <div onClick={()=>setShowNotification(false)} className={`${showNotification ? "flex" : "hidden"} absolute items-center justify-center w-full h-full bg-black/[0.5]`}>
         <div className='-translate-y-20 bg-gray-800 mx-5 p-3 rounded-sm'>
-        <p className='text-center text-gray-100 font-semibold tracking-wider' style={{ margin: '0' }}>Note: This application requires Sepolia Testnet account to function properly.</p>
+        <p className='text-center text-gray-100 font-semibold tracking-wider' style={{ margin: '0' }}>Note: This application requires arbitrum-sepolia Testnet account to function properly.</p>
         </div>
       </div>
     );
