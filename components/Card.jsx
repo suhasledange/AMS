@@ -7,9 +7,9 @@ const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
 
   const [searchValue, setSearchValue] = useState('');
 
-  // if (!allShipmentsdata) {
-  //   return <div className='text-lx font-medium h-40 text-gray-600 pl-52'>Loading...</div>; 
-  // }
+  if (!allShipmentsdata) {
+    return <div className='text-xl font-medium h-40 text-gray-600 pl-52'>Loading...</div>; 
+  }
 
   const filteredData = allShipmentsdata?.filter((shipment) => {
     const { weaponName, weaponType,sender,receiver } = shipment;
@@ -43,7 +43,7 @@ const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
          <div className='flex flex-wrap gap-5 items-center lg:justify-normal justify-center'>
       
        {filteredData?.map((shipment,idx)=>(
-         <Cards key={idx} shipment={shipment}/>      
+         <Cards key={idx} id={idx} shipment={shipment}/>      
          ))} 
         </div> 
         

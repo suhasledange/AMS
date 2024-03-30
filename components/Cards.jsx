@@ -1,8 +1,6 @@
 import React from 'react'
 import { RiFileCopyLine } from 'react-icons/ri';
-const Cards = ({shipment}) => {
-
-    
+const Cards = ({id,shipment}) => {
 
     const handleCopy = (text) => {
         navigator.clipboard.writeText(text); 
@@ -32,6 +30,13 @@ const Cards = ({shipment}) => {
 
         <div className='my-8 flex flex-col gap-2 px-1 text-wrap break-words overflow-x-hidden overflow-y-scroll h-[25rem] w-full'>
                 
+                <div className='border-b-2 border-gray-400 pb-1 flex items-center '>
+                    <h1 className='text-md font-medium'>Id : </h1>
+                    <p className='text-md flex items-center ml-1'>{id}
+                    </p>
+                    
+                </div>
+
                 <div className='border-b-2 border-gray-400 pb-1 '>
                     <h1 className='text-md font-medium'>Sender : </h1>
                     <p className='text-sm flex gap-2 items-center'>{shipment.sender.slice(0,10)+"..."+shipment.sender.slice(36,42)}

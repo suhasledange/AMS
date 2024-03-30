@@ -60,7 +60,7 @@ const Index = () => {
       
       <Services setOpenProfile={setOpenProfile} setBase={setBase} setCompleteModal={setCompleteModal} setGetModel={setGetModel} setStartModal={setStartModal} shipCount={shipCount} />
       <Card setcreateShipmentModel={setCreateShipmentModel} allShipmentsdata={allShipmentsdata} />
-      <Form createShipmentModel={createShipmentModel} createShipment={createShipment} setcreateShipmentModel={setCreateShipmentModel} getAllShipment={getAllShipment} setAllShipmentsdata={setAllShipmentsdata} />
+      <Form createShipmentModel={createShipmentModel} createShipment={createShipment} setcreateShipmentModel={setCreateShipmentModel} getAllShipment={getAllShipment} setallShipmentsdata={setAllShipmentsdata} />
       <Profile openProfile={openProfile} setOpenProfile={setOpenProfile} currentUser={currentUser} shipCount={shipCount} Balance={balance} />
       <Base openBase={openBase} setBase={setBase} />
       <CompleteShipment completeModal={completeModal} setCompleteModal={setCompleteModal} completeShipment={completeShipment} getAllShipment={getAllShipment} setAllShipmentsdata={setAllShipmentsdata} />
