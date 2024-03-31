@@ -8,7 +8,9 @@ const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
   const [searchValue, setSearchValue] = useState('');
 
   if (!allShipmentsdata) {
-    return <div className='text-xl font-medium h-40 text-gray-600 pl-52'>Loading...</div>; 
+    return <div className=' min-h-40 max-w-screen-xl mx-auto px-4 md:px-8'>
+          <div className='text-xl font-medium h-40 text-gray-600'>Loading...</div>
+    </div>
   }
 
   const filteredData = allShipmentsdata?.filter((shipment) => {
