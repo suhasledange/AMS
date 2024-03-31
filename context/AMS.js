@@ -4,7 +4,7 @@ import ams from '../context/AMS.json'
 import { useEffect, useState } from "react";
 import React from 'react'
 
-const ContractAddress = "0x06BE56E178669596107269bE99B3C224d3b77D8e";
+const ContractAddress = "0xb9845287A05719C34cb0703585FCA57341ad0944";
 const ContractABI = ams.abi;
 
 const fetchContract = (signerProvider) =>
@@ -149,9 +149,7 @@ export const AmsProvider = ({ children }) => {
             const transaction = await contract.completeShipment(
                 accounts[0],
                 receiver,
-                index*1, {
-                gasLimit: 3000000,
-            }
+                index*1, 
             );
            await transaction.wait();
 
@@ -200,7 +198,6 @@ export const AmsProvider = ({ children }) => {
 
     const startShipment = async (getProduct) => {
         const { receiver, index } = getProduct;
-        console.log(receiver," ",index)
         try {
             if (!window.ethereum) return "Install Metamask";
 
@@ -216,9 +213,8 @@ export const AmsProvider = ({ children }) => {
             const shipment = await contract.startShipment(
                 accounts[0],
                 receiver,
-                index * 1,{
-                gasLimit: 3000000,
-                });
+                index * 1,
+                );
 
             await shipment.wait();
 
