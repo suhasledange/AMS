@@ -37,9 +37,8 @@ const Form = ({ setallShipmentsdata,getAllShipment,createShipmentModel, createSh
   const createItem = async () => {
     try {
       await createShipment(shipment);
-      const getCampaignData = getAllShipment();
-      const allData = await getCampaignData;
-      await setallShipmentsdata(allData);
+      const getCampaignData = await getAllShipment();
+      await setallShipmentsdata(getCampaignData);
       setcreateShipmentModel(false)
     } catch (error) {
       console.log("wrong creating item");
@@ -58,7 +57,7 @@ const Form = ({ setallShipmentsdata,getAllShipment,createShipmentModel, createSh
           </div>
           <div className='max-w-sm mx-auto py-3 space-y-3 text-center'>
             <h4 className='text-lg font-medium dark:text-gray-200 text-gray-800'>
-              Track and Create Shipment
+              Create Shipment
             </h4>
             <p className='text-[15px] dark:text-gray-400 text-gray-600'>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore laboriosam repudiandae pariatur voluptatum quae praesentium rerum.

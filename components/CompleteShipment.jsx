@@ -10,9 +10,8 @@ const CompleteShipment = ({setAllShipmentsdata,getAllShipment,completeModal,setC
 
     const changeStatus = async()=>{
       await completeShipment(completeShip);
-      const getCampaignData = getAllShipment();
-      const allData = await getCampaignData;
-      await setAllShipmentsdata(allData);
+      const getCampaignData = await getAllShipment();
+      await setAllShipmentsdata(getCampaignData);
       setCompleteModal(false)
     }
   return completeModal ? (

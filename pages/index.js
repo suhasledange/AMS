@@ -50,9 +50,6 @@ const Index = () => {
   
     fetchData();
   
-    const intervalId = setInterval(fetchData, 3000);
-  
-    return () => clearInterval(intervalId);
   }, []);
 
 

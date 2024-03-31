@@ -11,9 +11,8 @@ const StartShipment = ({ setAllShipmentsdata,getAllShipment,startModal, setStart
 
   const StartShipment = async () => {
     await startShipment(getProduct);
-    const getCampaignData = getAllShipment();
-    const allData = await getCampaignData;
-    await setAllShipmentsdata(allData);
+    const getCampaignData = await getAllShipment();
+    await setAllShipmentsdata(getCampaignData);
     setStartModal(false)
   }
 
