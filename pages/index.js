@@ -21,19 +21,9 @@ const Index = () => {
   const [shipCount, setShipCount] = useState(0);
   const [balance, setBalance] = useState(0);
   const [showNotification, setShowNotification] = useState(false);
-  useEffect(() => {
-    const fetchData = async () => {
-      const allData = await getAllShipment();
-      const count = await getAllShipmentCount();
-      const balance = await getBalance();
+  
 
-      setAllShipmentsdata(allData);
-      setShipCount(count);
-      setBalance(balance);
-    };
-
-    fetchData();
-
+  useEffect(()=>{
     const notificationShown = localStorage.getItem('notificationShown');
     if (!notificationShown) {
       setShowNotification(true);
@@ -43,7 +33,29 @@ const Index = () => {
         setShowNotification(false);
       }, 5000);
     }
+
+  },[])
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const allData = await getAllShipment();
+      const count = await getAllShipmentCount();
+      const balance = await getBalance();
+  
+      setAllShipmentsdata(allData);
+      setShipCount(count);
+      setBalance(balance);
+    };
+  
+    fetchData();
+  
+    const intervalId = setInterval(fetchData, 3000);
+  
+    return () => clearInterval(intervalId);
   }, []);
+
+
   const PolygonNotification = () => {
     return (
       <div onClick={()=>setShowNotification(false)} className={`${showNotification ? "flex" : "hidden"} absolute items-center justify-center w-full h-full bg-black/[0.5]`}>
