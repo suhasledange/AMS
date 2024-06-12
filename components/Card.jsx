@@ -15,7 +15,6 @@ const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
 
   const filteredData = allShipmentsdata?.filter((shipment) => {
     const { weaponName, weaponType,sender,receiver } = shipment;
-    console.log(shipment)
 
     return (
       weaponName.toLowerCase().includes(searchValue.toLowerCase()) ||

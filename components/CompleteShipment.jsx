@@ -33,6 +33,7 @@ const CompleteShipment = ({setAllShipmentsdata,getAllShipment,completeModal,setC
             <form onSubmit={(e) => e.preventDefault()}>
               <div className='relative mt-3'>
                 <input className='w-full pl-5 pr-3 py-2 dark:text-gray-200 text-gray-500 bg-transparent outline-none border focus:border-blue-900 shadow-sm rounded-lg' placeholder='Receiver' type='text'
+                value={completeShip.receiver}
                   onChange={(e) =>
                     setCompleteShip({
                       ...completeShip,
@@ -42,6 +43,7 @@ const CompleteShipment = ({setAllShipmentsdata,getAllShipment,completeModal,setC
               </div>
               <div className='relative mt-3'>
                 <input className='w-full pl-5 pr-3 py-2 dark:text-gray-200 text-gray-500 bg-transparent outline-none border focus:border-blue-900 shadow-sm rounded-lg' placeholder='Id' type='text'
+                value={completeShip.index}
                   onChange={(e) =>
                     setCompleteShip({
                       ...completeShip,

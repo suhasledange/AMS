@@ -64,7 +64,9 @@ const Form = ({ setallShipmentsdata,getAllShipment,createShipmentModel, createSh
             </p>
             <form onSubmit={(e) => e.preventDefault()}>
               <div className='relative mt-3'>
-                <input required type="text" placeholder='Receiver' className='w-full pl-5 pr-3 py-2 text-gray-500 dark:text-gray-200 bg-transparent outline-none border dark:focus:border-blue-900 focus:border-blue-900 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input required type="text" placeholder='Receiver' className='w-full pl-5 pr-3 py-2 text-gray-500 dark:text-gray-200 bg-transparent outline-none border dark:focus:border-blue-900 focus:border-blue-900 shadow-sm rounded-lg'
+                value={shipment.receiver}
+                onChange={(e) => setShipment({
                   ...shipment,
                   receiver: e.target.value,
                 })} />
@@ -72,19 +74,25 @@ const Form = ({ setallShipmentsdata,getAllShipment,createShipmentModel, createSh
                 
               </div>
               <div className='relative mt-3'>
-                <input required type="date" placeholder='PickupTime' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-600 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input required type="date" placeholder='PickupTime' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-600 dark:focus:border-blue-600 shadow-sm rounded-lg' 
+                 value={shipment.pickupTime}
+                onChange={(e) => setShipment({
                   ...shipment,
                   pickupTime: e.target.value,
                 })} />
               </div>
               <div className='relative mt-3'>
-                <input required type="number" placeholder='Distance' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent  outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input required type="number" placeholder='Distance' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent  outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' 
+                value={shipment.distance}
+                onChange={(e) => setShipment({
                   ...shipment,
                   distance: e.target.value,
                 })} />
               </div>
               <div className='relative mt-3'>
-                <input required type="number" step="0.0001" placeholder='Price' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' onChange={(e) => setShipment({
+                <input required type="number" step="0.0001" placeholder='Price' className='w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' 
+                value={shipment.price}
+                onChange={(e) => setShipment({
                   ...shipment,
                   price: e.target.value,
                 })} />
@@ -136,7 +144,9 @@ const Form = ({ setallShipmentsdata,getAllShipment,createShipmentModel, createSh
 
               <div className='relative mt-3'>
 
-                <textarea rows={3} className=' resize-none w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' placeholder='Ammo Details' onChange={(e) => setShipment({
+                <textarea rows={3} className=' resize-none w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-blue-900 dark:focus:border-blue-600 shadow-sm rounded-lg' placeholder='Ammo Details' 
+                value={shipment.weaponDetails}
+                onChange={(e) => setShipment({
                   ...shipment,
                   weaponDetails: e.target.value,
                 })} />

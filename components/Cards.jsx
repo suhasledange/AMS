@@ -70,7 +70,7 @@ const Cards = ({id,shipment}) => {
                 </div>
                 <div className='border-b-2 border-gray-400 pb-1 '>
                     <h1 className='text-md font-medium'>Ammo Details : </h1>
-                    <textarea  rows={4} className=' bg-transparent focus:outline-none text-sm w-full resize-none' value={shipment.weaponDetails} />
+                    <textarea  rows={4} className=' bg-transparent focus:outline-none text-sm w-full resize-none' value={shipment.weaponDetails} readOnly />
                 </div>
                 <div className='border-b-2 border-gray-400 pb-1 '>
                     <h1 className='text-md font-medium'>Pickup Time : </h1>

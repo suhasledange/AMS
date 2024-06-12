@@ -40,6 +40,7 @@ const GetShipment = ({ getModel, setGetModel, getShipment }) => {
             <form onSubmit={(e) => e.preventDefault()}>
               <div className=' relative mt-3'>
                   <input required type='number' placeholder='Id' className=' w-full pl-5 pr-3 py-2 dark:text-gray-200  text-gray-500 bg-transparent outline-none border focus:border-blue-900 shadow-sm rounded-lg' 
+                  value={index}
                   onChange={(e)=>setIndex(e.target.value)}/>
               </div>
               <button onClick={()=>getShipmentData()} className='block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-gray-800 dark:hover:bg-gray-700 hover:bg-gray-900 duration-100 active:bg-gray-800 rounded-lg ring-offset-2 ring-gray-700 focus:ring-2'>
