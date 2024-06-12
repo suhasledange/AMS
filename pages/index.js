@@ -8,7 +8,6 @@ const Index = () => {
   useEffect(() => {
     document.querySelector('html').classList.remove('light', 'dark');
     document.querySelector('html').classList.add(themeMode);
-    const theme = localStorage.getItem('mode');
   }, [themeMode]);
 
   const [createShipmentModel, setCreateShipmentModel] = useState(false);
