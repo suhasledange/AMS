@@ -31,7 +31,7 @@ const Index = () => {
   
       setTimeout(() => {
         setShowNotification(false);
-      }, 5000);
+      }, 8000);
     }
 
   },[])
