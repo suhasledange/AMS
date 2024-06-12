@@ -25,6 +25,7 @@ const Card = ({setcreateShipmentModel,allShipmentsdata}) => {
     );
   });
 
+
   return (
     <div className=' min-h-40 max-w-screen-xl mx-auto px-4 md:px-8'>
         <div className=' items-start md:flex justify-between'>
